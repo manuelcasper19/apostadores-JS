@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+     <link rel="stylesheet" href="css/style.css">  
+     
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    
+     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> -->
+     <script type="text/javascript" src="js/Winwheel.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+     <!-- <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    
+
+     <link rel="shortcut icon" href="img/fabicon.jpg">
+     
+    <title>Rulette Game</title>
+</head>
+<body>
+    
+    <!-- Container general-->
+   
+    <div class="container">
+        <h1 class="text-center">Welcome to Roulette Game</h1>
+        <!-- APP   general-->
+        <div id="app-bets" class="row pt-5">
+            <div class="jugadores col-md-5" id="player">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Add a player</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="addplayer-form" class="formulario">
+
+                            <div class="formulario__grupo" id="grupo__nameplayer">
+                                <div class="formulario__grupo-input">
+                           
+                                <input type="text" id="nameplayer" name="nameplayer" placeholder="Name player" class="formulario__input form-control">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                           
+                             </div>
+                                <p class="formulario__input-error">El nombre solo puede tener letras, por favor ingrese la información correcta</p>
+                           </div>
+
+                           <div class="formulario__grupo" id="grupo__accountnumbre">
+                            <div class="formulario__grupo-input">
+                            
+                                <input type="text" id="accountnumbre" name="accountnumbre" placeholder="Account number" class="formulario__input form-control">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                           
+                            
+                            </div>
+                            <p class="formulario__input-error">La cuenta solo puede un número de 8 digitos</p>
+                           </div>
+
+                        
+
+                            <div class="group-btn-form form-group">
+                                <input type="submit" value="Save" class="btn btn-primary">
+                                <input type="button" value="Go to play" class="btn btn-success" name="gotoplay" id="gotoplay">
+                                
+                            </div>
+                        
+
+                         
+                   
+                        </form>
+                        <div class="formulario__mensaje" id="formulario__mensaje">
+                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Ingrese la información correcta. </p>
+                           </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-7" id="player-list">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover" id="player-list-table">
+                            <thead>
+                              <tr>
+                                <th scope="col" id="idplayer">ID</th>
+                                <th scope="col">NamePlayer</th>
+                                <th scope="col">Money</th>
+                                <th scope="col" id="status">Account Number</th>  
+                                       
+                                
+                                <th scope="col" >Delete</th>   
+                               
+                              </tr>
+                            </thead>
+                            <tbody> 
+                           
+                            </tbody>
+                          </table>
+                          <div class="form-group" id="gamebuttongroup">   
+                            <input type="button" value="Back to top" class="btn btn-secondary" name="back" id="back">                          
+                            <input type="button" value="Start Game" class="btn btn-primary btn-responsive" name="startgame" id="stargame">
+                            
+                            
+                        </div>
+
+
+                    </div>
+                </div>
+               
+                
+            </div>
+
+            <div class="col-md-8" id="all-player">
+                <div class="card">
+                    <div class="card-body">
+                        
+
+                        <table class="table table-hover text-center mb-4" id="Players-to-bet">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name Player</th>
+                                <th scope="col">Money</th>
+                                <th scope="col">Bet Number</th>
+                                <th scope="col">Bet Value</th>
+                                <th scope="col">Finalize</th>
+                              </tr>
+                            </thead>
+                            <tbody>    
+                            
+                              
+                            </tbody>
+                          </table>
+                          <div class="formulario__mensaje1" id="formulario__mensaje1">
+                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Ingrese la información. </p>
+                           </div>
+                          
+                         <div class="groupbuttonesbet"> 
+                        <input type="button" value="To Bet" class="btn btn-success" name="ToBet" id="ToBet">
+                        <input type="button" value="Finish All" class="btn btn-info" name="FinishAll" id="FinishAll"> 
+                         </div> 
+
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="roulette"> 
+                
+                       <canvas id="canvas" width="400px" height="400px">
+
+                       </canvas>
+                
+            </div>
+
+            <div class="col-md-6" id="report">
+                <div class="card">
+                    <div class="card-body">
+                       
+                        <table class="table table-hover text-center mb-4" id="tablereport">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name Player</th>
+                                <th scope="col">Amount to be Paid</th>
+                                <th scope="col">Trend</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>    
+                            
+                              
+                            </tbody>
+                          </table>
+                    </div>
+                    <input type="button" value="Pay all" class="btn btn-secondary" name="PayAll" id="PayAll">
+                </div>
+                
+
+            </div>
+            <div class="col-md-6" id="earningreport">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center">Ganancias </h1>
+                        <h2 class="text-center">
+                        <div class="profits" id="profits">
+                        </h2>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+
+            </div>
+        
+        </div>
+        <!--END  APP   general-->
+        
+
+    </div>
+    <!-- End Container general-->
+
+
+
+ <script src="js/validate.js"></script>   
+<script src="js/main.js"></script>
+<script src="js/Rulette.js"></script>
+<script src="js/sweetalert2@11.js"></script>
+<script src="js/TweenMax.min.js"></script>
+
+</body>
+</html>
